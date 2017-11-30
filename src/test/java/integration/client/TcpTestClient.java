@@ -52,7 +52,7 @@ public class TcpTestClient implements Runnable {
     }
   }
 
-  private void sendRequest(String message) {
+  public void sendRequest(String message) {
     try {
       this.socket = new Socket(InetAddress.getLocalHost(), this.getPort());
 

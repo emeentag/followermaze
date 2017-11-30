@@ -10,19 +10,18 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import org.apache.log4j.Logger;
 
 import server.entity.User;
-import server.event.handler.UserRegisterHandler;
 
 /**
- * UserRegistrarServer
- * This server opens a port for registration and then create register handlers for 
- * each and every register request.
+ * EventReceiverServer
+ * This server opens a port and starts to listen for events and then
+ * create event receiver handlers for each and every event request.
  */
-public class UserRegistrarServer extends Server implements Runnable {
+public class EventReceiverServer extends Server implements Runnable {
 
   private final Logger logger = Logger.getLogger(this.getClass());
-  private final int port = 9099;
+  private final int port = 9090;
 
-  public UserRegistrarServer(ConcurrentHashMap<Long, User> userMap, ExecutorService pool, AtomicBoolean inService) {
+  public EventReceiverServer(ConcurrentHashMap<Long, User> userMap, ExecutorService pool, AtomicBoolean inService) {
     super(userMap, pool, inService);
   }
 
@@ -35,13 +34,11 @@ public class UserRegistrarServer extends Server implements Runnable {
       while (getInService().get()) {
         final Socket socket = getServerSocket().accept();
 
-        getPool().submit(new UserRegisterHandler(getUserMap(), socket, getInService()));
+        // Handle the event.
       }
 
-      logger.info("Registration server stops to serve on port: " + port);
-
     } catch (IOException e) {
-      logger.error("There was something wrong while starting registrar server.", e);
+      logger.error("There was something wrong while starting event receiver server.", e);
     }
   }
 

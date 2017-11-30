@@ -327,3 +327,9 @@ is sent.
 2017-11-30 14:03:00,196 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > New registration request for id: 2932
 2017-11-30 14:03:00,196 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > A new user registered with id: 2932
 2017-11-30 14:03:02,164 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 14:26:14,985 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 14:26:16,006 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 14:26:16,007 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > New registration request for id: 2932
+2017-11-30 14:26:16,008 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > A new user registered with id: 2932
+2017-11-30 14:26:17,994 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
