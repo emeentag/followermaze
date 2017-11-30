@@ -1,0 +1,329 @@
+2017-11-30 10:48:34,988 INFO [Test worker] integration.UserRegistrarServerTest  > before
+2017-11-30 10:48:34,990 INFO [Test worker] integration.UserRegistrarServerTest  > after
+2017-11-30 10:48:34,993 INFO [Test worker] integration.UserRegistrarServerTest  > before
+2017-11-30 10:48:37,994 INFO [Test worker] integration.UserRegistrarServerTest  > after
+2017-11-30 10:51:27,162 INFO [Test worker] integration.UserRegistrarServerTest  > before
+2017-11-30 10:51:30,174 INFO [Test worker] integration.UserRegistrarServerTest  > after
+2017-11-30 10:52:50,459 INFO [Test worker] integration.UserRegistrarServerTest  > before
+2017-11-30 10:52:51,515 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+sent
+2017-11-30 10:54:56,346 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 10:54:57,365 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+sent
+2017-11-30 10:54:57,366 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 10:55:22,973 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 10:55:22,999 ERROR [pool-1-thread-1] integration.client.TcpTestClient  > Socket is already in use
+java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at java.net.Socket.<init>(Socket.java:434)
+	at java.net.Socket.<init>(Socket.java:244)
+	at integration.client.TcpTestClient.sendRequest(TcpTestClient.java:57)
+	at integration.client.TcpTestClient.run(TcpTestClient.java:36)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:748)
+2017-11-30 10:59:29,773 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 10:59:30,792 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 10:59:30,792 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 11:34:49,908 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 11:34:50,927 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 11:34:50,928 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 11:34:57,870 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 11:34:57,889 ERROR [pool-1-thread-1] integration.client.TcpTestClient  > Socket is already in use
+java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at java.net.Socket.<init>(Socket.java:434)
+	at java.net.Socket.<init>(Socket.java:244)
+	at integration.client.TcpTestClient.sendRequest(TcpTestClient.java:58)
+	at integration.client.TcpTestClient.run(TcpTestClient.java:36)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:748)
+2017-11-30 11:34:57,894 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 11:37:52,587 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 11:37:52,606 ERROR [pool-1-thread-1] integration.client.TcpTestClient  > Socket is not available.
+java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at java.net.Socket.<init>(Socket.java:434)
+	at java.net.Socket.<init>(Socket.java:244)
+	at integration.client.TcpTestClient.sendRequest(TcpTestClient.java:58)
+	at integration.client.TcpTestClient.run(TcpTestClient.java:36)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:748)
+2017-11-30 11:37:52,611 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 11:40:04,971 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 11:40:05,996 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 11:40:05,996 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 11:40:05,997 INFO [pool-1-thread-1] server.UserRegistrarServer  > Registration server stops to serve on port: 9099
+2017-11-30 11:40:57,202 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 11:40:58,220 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 11:40:58,220 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 11:42:06,610 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 11:42:07,632 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 11:43:13,836 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 11:43:14,859 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 11:43:14,859 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 11:43:49,539 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 11:43:50,558 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 11:43:52,547 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 11:46:22,617 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 11:46:23,637 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 11:46:23,639 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 11:46:23,639 ERROR [pool-1-thread-1] server.UserRegistrarServer  > There was something wrong while registration.
+java.net.SocketException: Socket closed
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:409)
+	at java.net.ServerSocket.implAccept(ServerSocket.java:545)
+	at java.net.ServerSocket.accept(ServerSocket.java:513)
+	at server.UserRegistrarServer.run(UserRegistrarServer.java:32)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:748)
+2017-11-30 11:48:25,432 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 11:48:26,450 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 11:48:26,451 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 11:48:26,452 ERROR [pool-1-thread-1] server.UserRegistrarServer  > There was something wrong while registration.
+java.net.SocketException: Socket closed
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:409)
+	at java.net.ServerSocket.implAccept(ServerSocket.java:545)
+	at java.net.ServerSocket.accept(ServerSocket.java:513)
+	at server.UserRegistrarServer.run(UserRegistrarServer.java:32)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:748)
+2017-11-30 11:48:41,355 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 11:48:42,370 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 11:48:42,371 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 11:49:14,655 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 11:49:15,675 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 11:49:15,676 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 12:45:02,105 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 12:45:03,131 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 12:45:03,132 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 12:45:26,213 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 12:45:27,239 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 12:45:27,239 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 12:47:42,381 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 12:47:43,412 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 12:47:43,413 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 12:48:19,689 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 12:48:20,707 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 12:48:20,708 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 12:49:25,539 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 12:49:26,558 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 12:49:26,559 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 12:51:01,590 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 12:51:02,614 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 12:51:02,614 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 12:52:10,944 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 12:52:11,961 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 12:52:11,961 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 12:54:42,418 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 12:54:43,436 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 12:54:43,436 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 12:55:38,655 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 12:55:39,676 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 13:10:03,048 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 13:10:04,071 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 13:10:04,073 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 13:11:44,603 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 13:11:45,620 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 13:11:45,620 INFO [Test worker] integration.UserRegistrarServerTest  > true
+2017-11-30 13:11:45,623 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 13:14:20,951 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 13:14:20,970 INFO [pool-1-thread-1] server.UserRegistrarServer  > SErdar.
+2017-11-30 13:14:20,972 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 13:14:20,973 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 13:15:35,638 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 13:15:36,662 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 13:15:38,653 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 13:16:27,306 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 13:16:27,325 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 13:16:30,318 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 13:17:36,059 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 13:17:37,076 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 13:17:39,069 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 13:18:40,168 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 13:18:41,183 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 13:18:43,177 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 13:19:19,481 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 13:19:20,496 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > Serdar
+2017-11-30 13:19:20,497 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 13:19:20,500 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > New registration request for id: 2932
+2017-11-30 13:19:20,501 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > A new user registered with id: 2932
+2017-11-30 13:19:22,489 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 13:20:55,283 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 13:20:56,303 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > Serdar
+2017-11-30 13:20:56,305 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 13:20:56,307 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > New registration request for id: 2932
+2017-11-30 13:20:56,307 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > A new user registered with id: 2932
+2017-11-30 13:20:58,289 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 13:21:06,222 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 13:21:07,236 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > Serdar
+2017-11-30 13:21:07,238 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 13:21:07,240 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > New registration request for id: 2932
+2017-11-30 13:21:07,240 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > A new user registered with id: 2932
+2017-11-30 13:21:09,233 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 13:21:47,429 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 13:21:47,451 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > Serdar
+2017-11-30 13:21:47,453 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 13:21:47,455 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > New registration request for id: 2932
+2017-11-30 13:21:47,456 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > A new user registered with id: 2932
+2017-11-30 13:21:47,457 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 13:22:20,763 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 13:22:21,775 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 13:22:21,781 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 13:22:21,783 INFO [pool-1-thread-1] server.UserRegistrarServer  > Registration server stops to serve on port: 9099
+2017-11-30 13:22:21,783 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > Serdar
+2017-11-30 13:22:43,347 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 13:22:44,364 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > Serdar
+2017-11-30 13:22:44,366 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 13:22:44,369 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > New registration request for id: 2932
+2017-11-30 13:22:44,370 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > A new user registered with id: 2932
+2017-11-30 13:22:46,355 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 13:22:58,732 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 13:22:58,751 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 13:22:58,753 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > New registration request for id: 2932
+2017-11-30 13:22:58,753 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > A new user registered with id: 2932
+2017-11-30 13:22:59,740 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 13:24:15,683 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 13:24:16,701 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 13:24:16,702 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > New registration request for id: 2932
+2017-11-30 13:24:16,703 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > A new user registered with id: 2932
+2017-11-30 13:24:18,695 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 13:34:58,013 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 13:34:59,029 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 13:34:59,030 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > New registration request for id: 2932
+2017-11-30 13:34:59,031 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > A new user registered with id: 2932
+2017-11-30 13:35:01,023 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 13:35:41,306 INFO [main] App  > Servers are up and running.
+2017-11-30 13:55:19,666 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 13:55:20,685 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 13:55:20,686 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > New registration request for id: 2932
+2017-11-30 13:55:20,687 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > A new user registered with id: 2932
+2017-11-30 13:55:22,675 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 13:56:47,062 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 13:56:47,083 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 13:56:47,086 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > New registration request for id: 2932
+2017-11-30 13:56:47,087 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > A new user registered with id: 2932
+2017-11-30 13:57:17,079 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 13:57:56,043 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 13:57:57,097 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 13:57:57,102 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > New registration request for id: 2932
+2017-11-30 13:57:57,103 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > A new user registered with id: 2932
+2017-11-30 13:58:01,051 INFO [pool-1-thread-4] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 13:58:01,052 INFO [pool-1-thread-5] server.event.handler.UserRegisterHandler  > New registration request for id: 2932
+2017-11-30 13:58:01,052 INFO [pool-1-thread-5] server.event.handler.UserRegisterHandler  > A new user registered with id: 2932
+2017-11-30 13:59:12,266 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 13:59:13,283 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 13:59:13,285 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > New registration request for id: 2932
+2017-11-30 13:59:13,285 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > A new user registered with id: 2932
+2017-11-30 13:59:15,277 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 14:01:03,491 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 14:01:04,513 INFO [pool-1-thread-1] server.UserRegistrarServer  > Registration server stops to serve on port: 9099
+2017-11-30 14:01:04,515 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 14:01:04,516 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > New registration request for id: 2932
+2017-11-30 14:01:04,517 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > A new user registered with id: 2932
+2017-11-30 14:01:08,508 INFO [pool-1-thread-4] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 14:01:52,565 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 14:01:53,592 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 14:01:53,595 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > New registration request for id: 2932
+2017-11-30 14:01:53,596 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > A new user registered with id: 2932
+2017-11-30 14:01:57,581 INFO [pool-1-thread-4] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 14:01:57,581 INFO [pool-1-thread-5] server.event.handler.UserRegisterHandler  > New registration request for id: 2932
+2017-11-30 14:01:57,582 INFO [pool-1-thread-5] server.event.handler.UserRegisterHandler  > A new user registered with id: 2932
+2017-11-30 14:02:20,404 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 14:02:21,425 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 14:02:21,426 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > New registration request for id: 2932
+2017-11-30 14:02:21,426 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > A new user registered with id: 2932
+2017-11-30 14:02:23,417 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 14:02:42,009 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 14:02:43,020 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 14:02:43,028 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 14:02:47,940 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 14:02:48,953 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
+2017-11-30 14:02:48,962 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 14:02:59,150 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is started.
+2017-11-30 14:03:00,194 INFO [pool-1-thread-2] integration.client.TcpTestClient  > Message: 2932
+is sent.
+2017-11-30 14:03:00,196 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > New registration request for id: 2932
+2017-11-30 14:03:00,196 INFO [pool-1-thread-3] server.event.handler.UserRegisterHandler  > A new user registered with id: 2932
+2017-11-30 14:03:02,164 INFO [Test worker] integration.UserRegistrarServerTest  > Integration registration test is finished.
