@@ -35,8 +35,11 @@ public class UserRegistrarServer extends Server implements Runnable {
       while (getInService().get()) {
         final Socket socket = getServerSocket().accept();
 
+        // Handle register.
         getPool().submit(new UserRegisterHandler(getUserMap(), socket, getInService()));
       }
+
+      shutDownServer();
 
       logger.info("Registration server stops to serve on port: " + port);
 

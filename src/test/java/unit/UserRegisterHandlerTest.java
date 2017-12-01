@@ -17,7 +17,7 @@ public class UserRegisterHandlerTest {
   }
 
   @Test
-  public void test01ExtractId() {
+  public void test01_extractId() {
     StringBuffer sBuf = new StringBuffer();
     sBuf.append("2932").append("\n").append("\r");
 

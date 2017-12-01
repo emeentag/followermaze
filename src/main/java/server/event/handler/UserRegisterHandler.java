@@ -44,18 +44,18 @@ public class UserRegisterHandler implements Runnable {
       final BufferedReader reader = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
       final PrintWriter writer = new PrintWriter(new OutputStreamWriter(this.socket.getOutputStream()), true);
 
-      while (this.inService.get()) {
-        String payload = reader.readLine();
+      //while (this.inService.get()) {
+      String payload = reader.readLine();
 
-        Long id = UtilFactory.getUtil().extractId(payload);
+      Long id = UtilFactory.getUtil().extractId(payload);
 
-        logger.info("New registration request for id: " + payload);
+      logger.info("New registration request for id: " + payload);
 
-        User user = new User(id, writer, new ConcurrentLinkedQueue<User>());
-        this.userMap.put(id, user);
+      User user = new User(id, writer, new ConcurrentLinkedQueue<User>());
+      this.userMap.put(id, user);
 
-        logger.info("A new user registered with id: " + id);
-      }
+      logger.info("A new user registered with id: " + id);
+      //}
 
     } catch (IOException e) {
       logger.error("An exception occured while reading registration.", e);

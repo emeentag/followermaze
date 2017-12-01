@@ -5,11 +5,17 @@
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
+import integration.EventReceiverServerTest;
 import integration.UserRegistrarServerTest;
+import unit.EventReceiverHandlerTest;
 import unit.UserRegisterHandlerTest;
 
+//@Suite.SuiteClasses({ UserRegistrarServerTest.class, EventReceiverServerTest.class, UserRegisterHandlerTest.class })
+// @Suite.SuiteClasses({ EventReceiverHandlerTest.class })
+// @Suite.SuiteClasses({ UserRegistrarServerTest.class })
+
 @RunWith(Suite.class)
-@Suite.SuiteClasses({ UserRegistrarServerTest.class, UserRegisterHandlerTest.class })
+@Suite.SuiteClasses({ EventReceiverServerTest.class })
 public class AppTest {
 
 }

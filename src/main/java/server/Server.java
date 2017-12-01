@@ -1,9 +1,12 @@
 package server;
 
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.atomic.AtomicBoolean;
+
+import org.apache.log4j.Logger;
 
 import server.entity.User;
 
@@ -12,6 +15,8 @@ import server.entity.User;
  * Abstract class of the servers.
  */
 public abstract class Server {
+
+  private final Logger logger = Logger.getLogger(this.getClass());
 
   private AtomicBoolean inService;
   private ServerSocket serverSocket;
@@ -78,6 +83,15 @@ public abstract class Server {
    */
   protected ServerSocket getServerSocket() {
     return serverSocket;
+  }
+
+  protected void shutDownServer() {
+    try {
+      this.serverSocket.close();
+      logger.info("Server socket closed.");
+    } catch (IOException e) {
+      logger.error("There was something wrong while closing the server.");
+    }
   }
 
 }

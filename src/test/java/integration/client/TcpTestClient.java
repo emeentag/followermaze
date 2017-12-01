@@ -60,7 +60,7 @@ public class TcpTestClient implements Runnable {
       writer.write(message);
       writer.println();
 
-      logger.info("Message: " + message + "is sent.");
+      logger.info("Message: " + message + " is sent.");
 
     } catch (UnknownHostException e) {
       logger.error("There is no host.", e);
