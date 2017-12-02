@@ -53,6 +53,14 @@ public class EventConsumerManager extends CustomConsumer implements Runnable {
 
   }
 
+  /**
+   * Events are added to the queue according to our event comparator.
+   * Means that if the sequence is smaller than the next one, small one
+   * will be the head of the queue. So in here in order to send events to the 
+   * destination we are checking the heads sequence with our sequence counter.
+   * If they are same then we are sending the event otherwise waits until the current
+   * sequence comes.
+   */
   private Event takeNextPossibleEvent() {
     Event head = this.eventBlockingQueue.peek();
 

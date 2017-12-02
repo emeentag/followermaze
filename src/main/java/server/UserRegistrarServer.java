@@ -9,6 +9,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.apache.log4j.Logger;
 
+import server.config.Config;
 import server.entity.User;
 import server.event.handler.UserRegisterHandler;
 
@@ -20,7 +21,7 @@ import server.event.handler.UserRegisterHandler;
 public class UserRegistrarServer extends Server implements Runnable {
 
   private final Logger logger = Logger.getLogger(this.getClass());
-  private final int port = 9099;
+  private final int port = Config.REGISTRATION_SERVER_PORT;
 
   public UserRegistrarServer(ConcurrentHashMap<Long, User> userMap, ExecutorService pool, AtomicBoolean inService) {
     super(userMap, pool, inService);

@@ -10,6 +10,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.apache.log4j.Logger;
 
+import server.config.Config;
 import server.entity.Event;
 import server.entity.User;
 import server.event.handler.EventReceiverHandler;
@@ -25,7 +26,7 @@ import server.event.handler.EventReceiverHandler;
 public class EventReceiverServer extends Server implements Runnable {
 
   private final Logger logger = Logger.getLogger(this.getClass());
-  private final int port = 9090;
+  private final int port = Config.EVENT_RECEIVER_SERVER_PORT;
 
   private PriorityBlockingQueue<Event> eventBlockingQueue;
 

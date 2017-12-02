@@ -13,6 +13,7 @@ import org.apache.log4j.PropertyConfigurator;
 
 import server.EventReceiverServer;
 import server.UserRegistrarServer;
+import server.config.Config;
 import server.consumer.EventConsumerManager;
 import server.entity.Event;
 import server.entity.User;
@@ -34,18 +35,27 @@ public class App {
   private EventConsumerManager eventConsumerManager;
 
   public App(String[] args) {
+    Config.checkConfig();
     setupLogger();
     init();
   }
 
   private void init() {
     this.inService = new AtomicBoolean(true);
-    this.pool = Executors.newCachedThreadPool();
+
+    // If it is 0 then lets set an automated thread pool.
+    if (Config.CONCURRENCY_LEVEL == 0) {
+      this.pool = Executors.newCachedThreadPool();
+    } else {
+      this.pool = Executors.newFixedThreadPool(Config.CONCURRENCY_LEVEL);
+    }
+
     this.userMap = new ConcurrentHashMap<>();
     this.eventBlockingQueue = new PriorityBlockingQueue<>(2048, new EventComparator());
 
     // Create event consumer.
-    this.eventConsumerManager = new EventConsumerManager(userMap, eventBlockingQueue, pool, inService);
+    this.eventConsumerManager = new EventConsumerManager(this.userMap, this.eventBlockingQueue, this.pool,
+        this.inService);
 
     // Create registrar server.
     this.registrarServer = new UserRegistrarServer(this.userMap, this.pool, this.inService);
@@ -70,11 +80,11 @@ public class App {
   private void setupLogger() {
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hhmmss");
     System.setProperty("currentDate", dateFormat.format(new Date()));
+    System.setProperty("logLevel", Config.LOG_LEVEL.toString());
 
     String log4jConfigFile = System.getProperty("user.dir") + File.separator + "src/main/resources/log4j.properties";
 
     PropertyConfigurator.configure(log4jConfigFile);
-    logger.setLevel(Level.ALL);
   }
 
   public static void main(String[] args) {
