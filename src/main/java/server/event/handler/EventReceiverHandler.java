@@ -22,12 +22,10 @@ public class EventReceiverHandler implements Runnable {
 
   private final Logger logger = Logger.getLogger(this.getClass());
 
-  private Long id;
   private PriorityBlockingQueue<Event> eventBlockingQueue;
   private Socket socket;
 
-  public EventReceiverHandler(Long id, PriorityBlockingQueue<Event> eventBlockingQueue, Socket socket) {
-    this.id = id;
+  public EventReceiverHandler(PriorityBlockingQueue<Event> eventBlockingQueue, Socket socket) {
     this.eventBlockingQueue = eventBlockingQueue;
     this.socket = socket;
   }
@@ -37,13 +35,15 @@ public class EventReceiverHandler implements Runnable {
     try {
       final BufferedReader reader = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
 
-      String payload = reader.readLine();
-      Event event = UtilFactory.getUtil().marshallEvent(payload);
+      String payload;
 
-      event.setId(this.id);
-      this.eventBlockingQueue.add(event);
+      while ((payload = reader.readLine()) != null) {
+        Event event = UtilFactory.getUtil().marshallEvent(payload);
+        this.eventBlockingQueue.put(event);
+      }
 
-      logger.info("A new event added to the queue for delivering.");
+      logger.info("Events are read.");
+
     } catch (IOException e) {
       logger.error("An exception occured while reading registration.", e);
     }

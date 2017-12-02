@@ -29,24 +29,24 @@ public class EventReceiverServer extends Server implements Runnable {
 
   private PriorityBlockingQueue<Event> eventBlockingQueue;
 
-  public EventReceiverServer(ConcurrentHashMap<Long, User> userMap, ExecutorService pool, AtomicBoolean inService) {
+  public EventReceiverServer(ConcurrentHashMap<Long, User> userMap, PriorityBlockingQueue<Event> eventBlockingQueue,
+      ExecutorService pool, AtomicBoolean inService) {
     super(userMap, pool, inService);
+
+    this.eventBlockingQueue = eventBlockingQueue;
   }
 
   @Override
   public void run() {
     try {
-      long idCounter = 0;
       setServerSocket(new ServerSocket(port));
-      this.eventBlockingQueue = new PriorityBlockingQueue<>();
 
       // Accept connection while serving.
       while (getInService().get()) {
         final Socket socket = getServerSocket().accept();
-        idCounter++;
 
         // Handle the event.
-        getPool().submit(new EventReceiverHandler(Long.valueOf(idCounter), eventBlockingQueue, socket));
+        getPool().submit(new EventReceiverHandler(eventBlockingQueue, socket));
       }
 
       shutDownServer();
@@ -56,10 +56,6 @@ public class EventReceiverServer extends Server implements Runnable {
     } catch (IOException e) {
       logger.error("There was something wrong while starting event receiver server.", e);
     }
-  }
-
-  public int getEventSize() {
-    return this.eventBlockingQueue.size();
   }
 
 }

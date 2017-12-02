@@ -10,7 +10,9 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import integration.client.TcpTestClient;
 import server.UserRegistrarServer;
@@ -20,9 +22,7 @@ import server.entity.User;
  * This test aims to check if the registration cycle successfully
  * created on port 9099.
  */
-/**
- * UserRegistrarServerTest
- */
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class UserRegistrarServerTest {
 
   private static final Logger logger = Logger.getLogger(UserRegistrarServerTest.class);
@@ -47,7 +47,7 @@ public class UserRegistrarServerTest {
   }
 
   @Before
-  public void mockServer() {
+  public void update() {
     userMap.clear();
   }
 
@@ -93,8 +93,10 @@ public class UserRegistrarServerTest {
     logger.info("Integration registration test is finished.");
   }
 
+  /**
+   * Just for merging threads.
+   */
   private static void hold(int timeout) {
-    //Just for merging threads.
     try {
       Thread.sleep(timeout);
     } catch (InterruptedException e) {

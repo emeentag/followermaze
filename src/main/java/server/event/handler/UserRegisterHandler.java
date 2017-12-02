@@ -3,8 +3,6 @@ package server.event.handler;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -42,20 +40,22 @@ public class UserRegisterHandler implements Runnable {
   public void run() {
     try {
       final BufferedReader reader = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
-      final PrintWriter writer = new PrintWriter(new OutputStreamWriter(this.socket.getOutputStream()), true);
 
-      //while (this.inService.get()) {
-      String payload = reader.readLine();
+      String payload;
+      Long id = 0L;
 
-      Long id = UtilFactory.getUtil().extractId(payload);
+      while ((payload = reader.readLine()) != null) {
+        id = UtilFactory.getUtil().extractId(payload);
 
-      logger.info("New registration request for id: " + payload);
+        logger.info("New registration request for id: " + payload);
 
-      User user = new User(id, writer, new ConcurrentLinkedQueue<User>());
-      this.userMap.put(id, user);
+        User user = new User(id, this.socket, new ConcurrentLinkedQueue<User>());
+        this.userMap.put(id, user);
 
-      logger.info("A new user registered with id: " + id);
-      //}
+        logger.info("A new user registered with id: " + id);
+      }
+
+      logger.info("User: " + id + " is read.");
 
     } catch (IOException e) {
       logger.error("An exception occured while reading registration.", e);

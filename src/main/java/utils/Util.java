@@ -22,7 +22,7 @@ public class Util {
       if (payload.charAt(0) >= '0' && payload.charAt(0) <= '9') {
 
         event = new Event();
-        keys = payload.replace("\\|", "/").split("/");
+        keys = payload.split("\\|");
 
         if (keys.length < 1)
           return null;

@@ -1,9 +1,9 @@
 #! /bin/bash
-export logLevel="info" \
+export logLevel="debug" \
        eventListenerPort=9090 \
        clientListenerPort=9099 \
        totalEvents=100 \
-       concurrencyLevel=10 \
+       concurrencyLevel=50 \
        randomSeed=666 \
        timeout=20000 \
        maxEventSourceBatchSize=100 \

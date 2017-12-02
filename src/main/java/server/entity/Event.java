@@ -7,7 +7,6 @@ import server.event.type.EventType;
  */
 public class Event implements Comparable<Event> {
 
-  private Long id;
   private String payload;
   private Long sequence;
   private EventType eventType;
@@ -19,7 +18,6 @@ public class Event implements Comparable<Event> {
   }
 
   public Event(String payload, Long sequence, Long id, EventType eventType, Long fromUser, Long toUser) {
-    this.id = id;
     this.payload = payload;
     this.sequence = sequence;
     this.eventType = eventType;
@@ -84,20 +82,6 @@ public class Event implements Comparable<Event> {
   }
 
   /**
-   * @param id the id to set
-   */
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  /**
-   * @return the id
-   */
-  public Long getId() {
-    return id;
-  }
-
-  /**
    * @param toUser the toUser to set
    */
   public void setToUser(Long toUser) {
@@ -113,7 +97,7 @@ public class Event implements Comparable<Event> {
 
   @Override
   public int compareTo(Event o) {
-    return Long.compare(this.getId(), o.getId());
+    return Long.compare(this.getSequence(), o.getSequence());
   }
 
 }

@@ -1,6 +1,6 @@
 package server.entity;
 
-import java.io.PrintWriter;
+import java.net.Socket;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
@@ -12,13 +12,13 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class User {
 
   private Long id;
-  private PrintWriter writer;
-  private ConcurrentLinkedQueue<User> concurrentLinkedQueue;
+  private Socket socket;
+  private ConcurrentLinkedQueue<User> followers;
 
-  public User(Long id, PrintWriter writer, ConcurrentLinkedQueue<User> concurrentLinkedQueue) {
+  public User(Long id, Socket socket, ConcurrentLinkedQueue<User> followers) {
     this.id = id;
-    this.writer = writer;
-    this.concurrentLinkedQueue = concurrentLinkedQueue;
+    this.socket = socket;
+    this.followers = followers;
   }
 
   /**
@@ -36,30 +36,30 @@ public class User {
   }
 
   /**
-   * @param writer the writer to set
+   * @param socket the socket to set
    */
-  public void setWriter(PrintWriter writer) {
-    this.writer = writer;
+  public void setSocket(Socket socket) {
+    this.socket = socket;
   }
 
   /**
-   * @return the writer
+   * @return the socket
    */
-  public PrintWriter getWriter() {
-    return writer;
+  public Socket getSocket() {
+    return socket;
   }
 
   /**
    * @param concurrentLinkedQueue the concurrentLinkedQueue to set
    */
-  public void setConcurrentLinkedQueue(ConcurrentLinkedQueue<User> concurrentLinkedQueue) {
-    this.concurrentLinkedQueue = concurrentLinkedQueue;
+  public void setFollowers(ConcurrentLinkedQueue<User> followers) {
+    this.followers = followers;
   }
 
   /**
    * @return the concurrentLinkedQueue
    */
-  public ConcurrentLinkedQueue<User> getConcurrentLinkedQueue() {
-    return concurrentLinkedQueue;
+  public ConcurrentLinkedQueue<User> getFollowers() {
+    return followers;
   }
 }

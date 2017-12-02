@@ -21,7 +21,7 @@ repositories {
 
 test {
     filter {
-        includeTestsMatching "AppTest"
+        includeTestsMatching "UnitTest"
     }
 	testLogging {
 		events = ["PASSED", "SKIPPED", "FAILED", "STANDARD_ERROR", "STANDARD_OUT"]
@@ -30,6 +30,30 @@ test {
 		exceptionFormat = "full"
 	}
 }
+
+// sourceSets {
+//     integrationTest {
+//         java {
+//             compileClasspath += main.output + test.output
+//             runtimeClasspath += main.output + test.output
+//             srcDir file('src/test/java/integration')
+//         }
+//     }
+// }
+
+// configurations {
+//     integrationTestCompile.extendsFrom testCompile
+//     integrationTestRuntime.extendsFrom testRuntime
+// }
+
+// task integrationTest(type: Test) {
+// 	testClassesDirs = sourceSets.integrationTest.output
+//     classpath = sourceSets.integrationTest.runtimeClasspath
+// 	outputs.upToDateWhen { false }
+// }
+
+// check.dependsOn integrationTest
+// integrationTest.mustRunAfter test
 
 dependencies {
     // This dependency is found on compile classpath of this component and consumers.
