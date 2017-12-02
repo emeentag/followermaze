@@ -2,7 +2,7 @@
 export logLevel="debug" \
        eventListenerPort=9090 \
        clientListenerPort=9099 \
-       totalEvents=100 \
+       totalEvents=50000 \
        concurrencyLevel=10 \
        randomSeed=666 \
        timeout=20000 \
