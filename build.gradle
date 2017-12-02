@@ -23,6 +23,15 @@ test {
     filter {
         includeTestsMatching "UnitTest"
     }
+}
+
+task integrationTest(type: Test, dependsOn: testClasses) {
+    filter {
+        includeTestsMatching "IntegrationTest"
+    }
+}
+
+tasks.withType(Test) {
 	testLogging {
 		events = ["PASSED", "SKIPPED", "FAILED", "STANDARD_ERROR", "STANDARD_OUT"]
 		displayGranularity = 2

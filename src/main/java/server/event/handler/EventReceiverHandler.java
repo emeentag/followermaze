@@ -42,7 +42,7 @@ public class EventReceiverHandler implements Runnable {
         this.eventBlockingQueue.put(event);
       }
 
-      logger.info("Events are read.");
+      logger.info("Events are done to read.");
 
     } catch (IOException e) {
       logger.error("An exception occured while reading registration.", e);

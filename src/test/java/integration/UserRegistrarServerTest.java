@@ -38,7 +38,7 @@ public class UserRegistrarServerTest {
     logger.info("Integration registration test is started.");
 
     inService = new AtomicBoolean(true);
-    pool = Executors.newFixedThreadPool(50);
+    pool = Executors.newCachedThreadPool();
     userMap = new ConcurrentHashMap<>();
     server = new UserRegistrarServer(userMap, pool, inService);
 
@@ -90,6 +90,7 @@ public class UserRegistrarServerTest {
   public static void killServer() {
     inService.set(false);
     pool.shutdown();
+    server.shutDownServer();
     logger.info("Integration registration test is finished.");
   }
 

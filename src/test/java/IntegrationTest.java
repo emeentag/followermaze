@@ -5,10 +5,12 @@
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
+import integration.EventReceiverServerTest;
 import integration.UserRegistrarServerTest;
+// @Suite.SuiteClasses({ UserRegistrarServerTest.class })
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({ UserRegistrarServerTest.class })
+@Suite.SuiteClasses({ UserRegistrarServerTest.class, EventReceiverServerTest.class })
 public class IntegrationTest {
 
 }

@@ -17,6 +17,7 @@ import org.junit.runners.MethodSorters;
 import integration.client.TcpTestClient;
 import server.EventReceiverServer;
 import server.UserRegistrarServer;
+import server.consumer.EventConsumerManager;
 import server.entity.Event;
 import server.entity.User;
 import server.entity.comparator.EventComparator;
@@ -37,26 +38,32 @@ public class EventReceiverServerTest {
   private static PriorityBlockingQueue<Event> eventBlockingQueue;
   private static EventReceiverServer eventServer;
   private static UserRegistrarServer userServer;
+  private static EventConsumerManager consumerManager;
 
   @BeforeClass
   public static void createServer() {
-
     logger.info("Integration event receiver test is started.");
 
     inService = new AtomicBoolean(true);
     userMap = new ConcurrentHashMap<>();
     eventBlockingQueue = new PriorityBlockingQueue<>(1024, new EventComparator());
-    pool = Executors.newFixedThreadPool(50);
+    pool = Executors.newCachedThreadPool();
     eventServer = new EventReceiverServer(userMap, eventBlockingQueue, pool, inService);
     userServer = new UserRegistrarServer(userMap, pool, inService);
+    consumerManager = new EventConsumerManager(userMap, eventBlockingQueue, pool, inService);
+
+    // Create server.
+    pool.submit(consumerManager);
+    pool.submit(userServer);
+    pool.submit(eventServer);
 
     // Register test clients.
-    TcpTestClient client1 = new TcpTestClient("Test Client1", userServerPort, "60\n", inService);
-    TcpTestClient client2 = new TcpTestClient("Test Client2", userServerPort, "50\n", inService);
-    TcpTestClient client3 = new TcpTestClient("Test Client3", userServerPort, "12\n\r", inService);
-    TcpTestClient client4 = new TcpTestClient("Test Client4", userServerPort, "9\r\n", inService);
-    TcpTestClient client5 = new TcpTestClient("Test Client5", userServerPort, "32\n", inService);
-    TcpTestClient client6 = new TcpTestClient("Test Client6", userServerPort, "56\n", inService);
+    TcpTestClient client1 = new TcpTestClient("Test Client1", userServerPort, "3\n", inService);
+    TcpTestClient client2 = new TcpTestClient("Test Client2", userServerPort, "4\n", inService);
+    TcpTestClient client3 = new TcpTestClient("Test Client3", userServerPort, "2\n\r", inService);
+    TcpTestClient client4 = new TcpTestClient("Test Client4", userServerPort, "1\r\n", inService);
+    TcpTestClient client5 = new TcpTestClient("Test Client5", userServerPort, "6\n", inService);
+    TcpTestClient client6 = new TcpTestClient("Test Client6", userServerPort, "5\n", inService);
     pool.submit(client1);
     pool.submit(client2);
     pool.submit(client3);
@@ -64,33 +71,40 @@ public class EventReceiverServerTest {
     pool.submit(client5);
     pool.submit(client6);
 
-    // Create server.
-    pool.submit(eventServer);
-    pool.submit(userServer);
+    while (userMap.size() < 6) {
+      // Hold until registration is done.
+    }
+
+    logger.info("Registered number of users: " + userMap.size());
   }
 
   @Test
   public void test01_checkServerCreation() {
+    Assert.assertNotNull(consumerManager);
     Assert.assertNotNull(eventServer);
     Assert.assertNotNull(userServer);
   }
 
   @Test
   public void test02_sendEvents() {
+    TcpTestClient sender = new TcpTestClient();
+    sender.setName("Sender Client");
+    sender.setPort(eventServerPort);
+    sender.setInService(inService);
+    sender.createSocket();
 
-    TcpTestClient client1 = new TcpTestClient("Test Client1", eventServerPort, "3|F|60|50", inService);
-    TcpTestClient client2 = new TcpTestClient("Test Client2", eventServerPort, "1|U|12|9", inService);
-    TcpTestClient client3 = new TcpTestClient("Test Client3", eventServerPort, "4|B", inService);
-    TcpTestClient client4 = new TcpTestClient("Test Client4", eventServerPort, "2|P|32|56", inService);
-    TcpTestClient client5 = new TcpTestClient("Test Client5", eventServerPort, "5|S|32", inService);
-    pool.submit(client1);
-    pool.submit(client2);
-    pool.submit(client3);
-    pool.submit(client4);
-    pool.submit(client5);
+    sender.sendRequest("1|F|3|4");
+    sender.sendRequest("3|U|3|4");
+    sender.sendRequest("4|B");
+    sender.sendRequest("2|P|1|56");
+    sender.sendRequest("5|F|2|3");
+    sender.sendRequest("6|F|4|3");
+    sender.sendRequest("7|U|2|3");
 
-    holdInWhile();
+    hold(3000);
 
+    Assert.assertEquals(0, userMap.get(4L).getFollowers().size());
+    Assert.assertEquals(1, userMap.get(3L).getFollowers().size());
     Assert.assertEquals(0, eventBlockingQueue.size());
   }
 

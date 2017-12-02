@@ -1,8 +1,8 @@
 package server.consumer;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 import org.apache.log4j.Logger;
 
@@ -23,7 +23,6 @@ public class EventConsumer extends CustomConsumer {
   }
 
   public void consumeEvent(Event event) {
-    logger.info("Event is: " + event.getEventType().name());
 
     switch (event.getEventType()) {
     case FOLLOW:
@@ -50,14 +49,19 @@ public class EventConsumer extends CustomConsumer {
   }
 
   /**
-   * Notify toUser's followers.
+   * Notify fromUser's followers.
    */
   private void handleStatus(Event event) {
     User fromUser = findUser(event.getFromUser());
+
     if (fromUser != null) {
       fromUser.getFollowers().forEach((user) -> {
         this.notifyUser(user, event.getPayload());
       });
+
+      logger.info("Status event is proccessed.");
+    } else {
+      logger.info("Status event ignored regarding to not found fromUser:" + event.getFromUser());
     }
   }
 
@@ -65,10 +69,13 @@ public class EventConsumer extends CustomConsumer {
    * Notify toUser.
    */
   private void handlePrivate(Event event) {
+    validateUsers(event);
+
     User toUser = findUser(event.getToUser());
-    if (toUser != null) {
-      this.notifyUser(toUser, event.getPayload());
-    }
+
+    this.notifyUser(toUser, event.getPayload());
+
+    logger.info("Private event is proccessed.");
   }
 
   /**
@@ -78,6 +85,8 @@ public class EventConsumer extends CustomConsumer {
     getUserMap().forEach((id, user) -> {
       this.notifyUser(user, event.getPayload());
     });
+
+    logger.info("Broadcast event is proccessed.");
   }
 
   /**
@@ -85,11 +94,14 @@ public class EventConsumer extends CustomConsumer {
    * There will be no notification.
    */
   private void handleUnFollow(Event event) {
+    validateUsers(event);
+
     User fromUser = findUser(event.getFromUser());
     User toUser = findUser(event.getToUser());
-    if (fromUser != null && toUser != null) {
-      toUser.getFollowers().remove(fromUser);
-    }
+
+    toUser.getFollowers().remove(fromUser);
+
+    logger.info("Unfollow event is proccessed.");
   }
 
   /**
@@ -97,11 +109,46 @@ public class EventConsumer extends CustomConsumer {
    * Notify toUser.
    */
   private void handleFollow(Event event) {
+    validateUsers(event);
+
     User fromUser = findUser(event.getFromUser());
     User toUser = findUser(event.getToUser());
-    if (fromUser != null && toUser != null) {
-      toUser.getFollowers().add(fromUser);
-      this.notifyUser(toUser, event.getPayload());
+
+    toUser.getFollowers().add(fromUser);
+    this.notifyUser(toUser, event.getPayload());
+
+    logger.info("Follow event is proccessed.");
+  }
+
+  /**
+   * Create user if they are not exist.
+   * Wee have to do this because somecases are needed
+   * to get notified from and unregistered user. Like status.
+   */
+  private void validateUsers(Event event) {
+    User fromUser = findUser(event.getFromUser());
+    User toUser = findUser(event.getToUser());
+
+    if (fromUser == null) {
+      logger.info(
+          "There is not a fromUser: " + event.getFromUser() + " for this " + event.getEventType().name() + " event.");
+
+      User user = new User(event.getFromUser(), null, new ConcurrentLinkedQueue<User>());
+
+      getUserMap().put(event.getFromUser(), user);
+
+      logger.info("User: " + event.getFromUser() + " added to the user map.");
+    }
+
+    if (toUser == null) {
+      logger
+          .info("There is not a toUser: " + event.getToUser() + " for this " + event.getEventType().name() + " event.");
+
+      User user = new User(event.getToUser(), null, new ConcurrentLinkedQueue<User>());
+
+      getUserMap().put(event.getToUser(), user);
+
+      logger.info("User: " + event.getToUser() + " added to the user map.");
     }
   }
 
@@ -117,19 +164,16 @@ public class EventConsumer extends CustomConsumer {
    * socket of it.
    */
   private void notifyUser(User user, String payload) {
-    PrintWriter writer;
-    try {
-      if (user.getSocket() != null) {
-        writer = new PrintWriter(user.getSocket().getOutputStream());
+    PrintWriter writer = user.getWriter();
 
-        if (writer != null) {
-          writer.println(payload);
+    if (writer != null) {
+      writer.println(payload);
 
-          logger.info("Message: " + payload + " is sent to: " + user.getId());
-        }
+      if (!writer.checkError()) {
+        logger.info("Event: " + payload + " is sent to: " + user.getId());
+      } else {
+        logger.error("An error occcured while sending event: " + payload);
       }
-    } catch (IOException e) {
-      logger.info("An error occcured while sending message: " + payload);
     }
   }
 }

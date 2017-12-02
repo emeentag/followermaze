@@ -1,4 +1,6 @@
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -38,7 +40,7 @@ public class App {
 
   private void init() {
     this.inService = new AtomicBoolean(true);
-    this.pool = Executors.newFixedThreadPool(100);
+    this.pool = Executors.newCachedThreadPool();
     this.userMap = new ConcurrentHashMap<>();
     this.eventBlockingQueue = new PriorityBlockingQueue<>(2048, new EventComparator());
 
@@ -66,6 +68,9 @@ public class App {
   * Uses the log4j.properties
   */
   private void setupLogger() {
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hhmmss");
+    System.setProperty("currentDate", dateFormat.format(new Date()));
+
     String log4jConfigFile = System.getProperty("user.dir") + File.separator + "src/main/resources/log4j.properties";
 
     PropertyConfigurator.configure(log4jConfigFile);

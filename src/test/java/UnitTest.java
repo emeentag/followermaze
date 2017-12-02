@@ -14,7 +14,8 @@ import unit.UserRegisterHandlerTest;
 //     EventConsumerTest.class })
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({ EventConsumerManagerTest.class })
+@Suite.SuiteClasses({ UserRegisterHandlerTest.class, EventReceiverHandlerTest.class, EventConsumerManagerTest.class,
+    EventConsumerTest.class })
 public class UnitTest {
 
 }

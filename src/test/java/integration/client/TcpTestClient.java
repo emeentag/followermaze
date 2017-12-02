@@ -3,6 +3,7 @@ package integration.client;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -23,6 +24,11 @@ public class TcpTestClient implements Runnable {
   private String message;
   private AtomicBoolean inService;
   private Socket socket;
+  private PrintWriter writer;
+
+  public TcpTestClient() {
+    super();
+  }
 
   public TcpTestClient(String name, int port, String message, AtomicBoolean inService) {
     this.name = name;
@@ -31,43 +37,49 @@ public class TcpTestClient implements Runnable {
     this.inService = inService;
   }
 
-  @Override
-  public void run() {
-    this.sendRequest(message);
-    this.getResponse();
-  }
-
-  private void getResponse() {
-    while (this.inService.get()) {
-      try {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
-        String payload = reader.readLine();
-
-        logger.info("Response received: " + payload);
-
-      } catch (IOException e) {
-        logger.error("Socket is not available.", e);
-        this.inService.set(false);
-      }
-    }
-  }
-
-  public void sendRequest(String message) {
+  public void createSocket() {
     try {
       this.socket = new Socket(InetAddress.getLocalHost(), this.getPort());
 
-      PrintWriter writer = new PrintWriter(this.socket.getOutputStream(), true);
-      writer.write(message);
-      writer.println();
-
-      logger.info("Message: " + message + " is sent.");
-
+      this.writer = new PrintWriter(new OutputStreamWriter(this.socket.getOutputStream()), true);
     } catch (UnknownHostException e) {
       logger.error("There is no host.", e);
       this.inService.set(false);
     } catch (IOException e) {
       logger.error("Socket is not available.", e);
       this.inService.set(false);
+    }
+  }
+
+  @Override
+  public void run() {
+    createSocket();
+    this.sendRequest(message);
+    this.getResponse();
+  }
+
+  private void getResponse() {
+    try {
+      BufferedReader reader = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
+      String payload;
+
+      while ((payload = reader.readLine()) != null) {
+        logger.info("Response received: " + payload);
+      }
+
+    } catch (IOException e) {
+      logger.error("Socket is not available.", e);
+      this.inService.set(false);
+    }
+  }
+
+  public void sendRequest(String message) {
+    this.writer.println(message);
+
+    if (!this.writer.checkError()) {
+      logger.info("Message: " + message + " is sent.");
+    } else {
+      logger.error("An error occured while sending message.");
     }
   }
 
@@ -111,6 +123,20 @@ public class TcpTestClient implements Runnable {
    */
   public int getPort() {
     return port;
+  }
+
+  /**
+   * @param inService the inService to set
+   */
+  public void setInService(AtomicBoolean inService) {
+    this.inService = inService;
+  }
+
+  /**
+   * @return the inService
+   */
+  public AtomicBoolean getInService() {
+    return inService;
   }
 
 }

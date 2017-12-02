@@ -71,6 +71,15 @@ public abstract class Server {
     return userMap;
   }
 
+  public void shutDownServer() {
+    try {
+      this.serverSocket.close();
+      logger.info("Server socket closed.");
+    } catch (IOException e) {
+      logger.error("There was something wrong while closing the server.");
+    }
+  }
+
   /**
    * @param serverSocket the serverSocket to set
    */
@@ -83,15 +92,6 @@ public abstract class Server {
    */
   protected ServerSocket getServerSocket() {
     return serverSocket;
-  }
-
-  protected void shutDownServer() {
-    try {
-      this.serverSocket.close();
-      logger.info("Server socket closed.");
-    } catch (IOException e) {
-      logger.error("There was something wrong while closing the server.");
-    }
   }
 
 }

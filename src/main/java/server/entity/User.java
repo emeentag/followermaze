@@ -1,6 +1,6 @@
 package server.entity;
 
-import java.net.Socket;
+import java.io.PrintWriter;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
@@ -12,12 +12,12 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class User {
 
   private Long id;
-  private Socket socket;
+  private PrintWriter writer;
   private ConcurrentLinkedQueue<User> followers;
 
-  public User(Long id, Socket socket, ConcurrentLinkedQueue<User> followers) {
+  public User(Long id, PrintWriter writer, ConcurrentLinkedQueue<User> followers) {
     this.id = id;
-    this.socket = socket;
+    this.writer = writer;
     this.followers = followers;
   }
 
@@ -36,17 +36,17 @@ public class User {
   }
 
   /**
-   * @param socket the socket to set
+   * @param writer the writer to set
    */
-  public void setSocket(Socket socket) {
-    this.socket = socket;
+  public void setWriter(PrintWriter writer) {
+    this.writer = writer;
   }
 
   /**
-   * @return the socket
+   * @return the writer
    */
-  public Socket getSocket() {
-    return socket;
+  public PrintWriter getWriter() {
+    return writer;
   }
 
   /**
