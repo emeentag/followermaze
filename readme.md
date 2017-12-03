@@ -1,4 +1,4 @@
-# Back-end Developer Challenge: Follower Maze, Serdar Simsek
+# Back-end Developer Challenge: Follower Maze
 
 <img src="assets/system.jpeg" height="300">
 <img src="assets/user_registration.jpeg" height="300">
