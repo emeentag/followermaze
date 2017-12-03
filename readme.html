@@ -57,7 +57,7 @@
 
 <body>
   <div class="container">
-    <h1 id="back-end-developer-challenge-follower-maze">Back-end Developer Challenge: Follower Maze</h1>
+    <h1 id="back-end-developer-challenge-follower-maze">Back-end Developer Challenge: Follower Maze, Serdar Simsek</h1>
     <p>
       <a href="assets/system.jpeg">
         <img src="assets/system.jpeg" height="315">
@@ -148,13 +148,18 @@
       </p>
       <h3 id="test-with-provided-jar">Test With Provided JAR</h3>
       <p>To test with the jar that you provided, first you have to run my application. I suggest to run with
-        <code>./run.sh</code> file. Because you can set some enviromental variables before you run the application. (Please have a look configuration
-        section for details.) And after you see
-        <em>Servers are up and running.</em> message you can run
+        <code>./run.sh</code> file. Because you can set some enviromental variables before you run the application with sell script. (Please have
+        a look configuration section for details.) This will run the application in development mode. If you want to build
+        a JAR file of the application and running it, please run
+        <code>./run --prod</code> command. This will run the all tests and build the application then create a JAR file under
+        <code>/build/libs/soundcloud-all-1.0.jar</code>. Also it runs the application immediately. (Note a sample jar file is also added to the root of the project so maybe
+        you want to run this jar file directly and starts the app. This is just for any case for failed build.) And after
+        you see
+        <em>"Servers are up and running."</em> message you can run
         <code>./followermaze.sh</code> and wait until the results are shown.</p>
       <p>
-        <em>Please note that: you can runthe application with default configs by running
-          <code>gradle run</code> command on cli.</em>
+        <em>Please note that: You can run the application with default configs by running
+          <code>gradle run</code> command too on cli.</em>
       </p>
     </div>
     <div class="section configuration">

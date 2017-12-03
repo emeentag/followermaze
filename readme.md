@@ -1,4 +1,4 @@
-# Back-end Developer Challenge: Follower Maze
+# Back-end Developer Challenge: Follower Maze, Serdar Simsek
 
 <img src="assets/system.jpeg" height="300">
 <img src="assets/user_registration.jpeg" height="300">
@@ -44,9 +44,13 @@ This project is created with gradle so it is enough to run `gradle test --info` 
 I also added some integration tests. Which means real servers and a tcp client are created then start to send events. I added another gradle task in my project for testing integration. To do that just run `gradle integrationTest --info`
 
 ### Test With Provided JAR
-To test with the jar that you provided, first you have to run my application. I suggest to run with `./run.sh` file. Because you can set some enviromental variables before you run the application. (Please have a look configuration section for details.) And after you see *Servers are up and running.* message you can run `./followermaze.sh` and wait until the results are shown.
+To test with the jar that you provided, first you have to run my application. I suggest to run with `./run.sh` file. Because you can set some enviromental variables before you run the application with shell script. (Please have a look configuration section for details.) This will run the application in development mode. 
 
-*Please note that: you can runthe application with default configs by running `gradle run` command on cli.*
+If you want to build a JAR file of the application and running it please run `./run --prod` command. This will run the all tests and build the application then create a JAR file under `/build/libs/`. Also it runs the application immediately. (Note a sample jar file is also added to the root of the project so maybe you want to run this jar file directly and starts the app. This is just for any case failed build.)
+
+And after you see *Servers are up and running.* message you can run `./followermaze.sh` and wait until the results are shown.
+
+*Please note that: You can run the application with default configs by running `gradle run` command too on cli.*
 
 ## Configuration
 You can run the application with the enviromental variables below:
