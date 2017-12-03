@@ -46,7 +46,7 @@ I also added some integration tests. Which means real servers and a tcp client a
 ### Test With Provided JAR
 To test with the jar that you provided, first you have to run my application. I suggest to run with `./run.sh` file. Because you can set some enviromental variables before you run the application with shell script. (Please have a look configuration section for details.) This will run the application in development mode. 
 
-If you want to build a JAR file of the application and running it please run `./run.sh --prod` command. This will run the all tests and build the application then create a JAR file under `/build/libs/`. Also it runs the application immediately. (Note a sample jar file is also added to the root of the project so maybe you want to run this jar file directly and starts the app. This is just for any case failed build.)
+If you want to build a JAR file of the application and running it please run `./run.sh --prod` command. This will run the all tests and build the application then create a JAR file under `/build/libs/soundcloud-all-1.0.jar`. Also it runs the application immediately. (Note a sample jar file is also added to the root of the project so maybe you want to run this jar file directly and starts the app. This is just for any case failed build.)
 
 And after you see *Servers are up and running.* message you can run `./followermaze.sh` and wait until the results are shown.
 
