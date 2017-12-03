@@ -16,6 +16,8 @@ then
     echo "Application jar file is not exist."
     echo "Building application jar file."
 
+    gradle test
+    gradle integrationTest
     gradle createJar
   fi
 
