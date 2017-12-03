@@ -1,5 +1,7 @@
 package utils;
 
+import java.io.File;
+
 import server.entity.Event;
 import server.event.type.EventType;
 
@@ -7,6 +9,7 @@ import server.event.type.EventType;
  * Util
  */
 public class Util {
+  String pathOfFile = null;
 
   public Long extractId(String payload) {
     Long id = Long.parseLong(payload.replace("\n", "").replace("\r", ""));
@@ -68,5 +71,22 @@ public class Util {
     }
 
     return event;
+  }
+
+  public String findFile(String name, File file) {
+    File[] list = file.listFiles();
+
+    if (pathOfFile == null) {
+      for (File currentFile : list) {
+        if (currentFile.isDirectory()) {
+          findFile(name, currentFile);
+        } else if (name.equalsIgnoreCase(currentFile.getName())) {
+          pathOfFile = currentFile.getPath();
+          break;
+        }
+      }
+    }
+
+    return pathOfFile;
   }
 }

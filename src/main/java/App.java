@@ -1,15 +1,10 @@
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 
 import server.EventReceiverServer;
 import server.UserRegistrarServer;
@@ -36,7 +31,8 @@ public class App {
 
   public App(String[] args) {
     Config.checkConfig();
-    setupLogger();
+    Config.configureLogger();
+
     init();
   }
 
@@ -70,21 +66,8 @@ public class App {
     this.pool.submit(this.registrarServer);
     this.pool.submit(this.eventServer);
 
+    logger.info(Config.getConfigInfo());
     logger.info("Servers are up and running.");
-  }
-
-  /**
-  * Setups the loader.
-  * Uses the log4j.properties
-  */
-  private void setupLogger() {
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hhmmss");
-    System.setProperty("currentDate", dateFormat.format(new Date()));
-    System.setProperty("logLevel", Config.LOG_LEVEL.toString());
-
-    String log4jConfigFile = System.getProperty("user.dir") + File.separator + "src/main/resources/log4j.properties";
-
-    PropertyConfigurator.configure(log4jConfigFile);
   }
 
   public static void main(String[] args) {

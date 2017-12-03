@@ -7,7 +7,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -26,8 +25,6 @@ import utils.UtilFactory;
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class EventConsumerManagerTest {
-  private static final Logger logger = Logger.getLogger(EventConsumerManagerTest.class);
-
   private AtomicBoolean inService;
   private ExecutorService pool;
   private ConcurrentHashMap<Long, User> userMap;

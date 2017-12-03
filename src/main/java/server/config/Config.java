@@ -1,7 +1,13 @@
 package server.config;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
+import utils.UtilFactory;
 
 /**
  * Config
@@ -49,14 +55,35 @@ public class Config {
     if (eventReceiverServerPort != null) {
       EVENT_RECEIVER_SERVER_PORT = Integer.valueOf(System.getenv("EVENT_RECEIVER_SERVER_PORT"));
     }
+  }
 
+  public static String getConfigInfo() {
     StringBuffer sBuf = new StringBuffer();
     sBuf.append("\nConfig:\n\t").append("CONCURRENCY_LEVEL: " + CONCURRENCY_LEVEL + "\n\t")
         .append("LOG_LEVEL: " + LOG_LEVEL + "\n\t")
         .append("REGISTRATION_SERVER_PORT: " + REGISTRATION_SERVER_PORT + "\n\t")
         .append("EVENT_RECEIVER_SERVER_PORT: " + EVENT_RECEIVER_SERVER_PORT + "\n\t");
 
-    Logger.getLogger(Config.class).info(sBuf.toString());
+    return sBuf.toString();
+  }
+
+  /**
+  * Setups the loader.
+  * Uses the log4j.properties
+  */
+  public static void configureLogger() {
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hhmmss");
+    System.setProperty("currentDate", dateFormat.format(new Date()));
+    System.setProperty("logLevel", Config.LOG_LEVEL.toString());
+
+    String log4jProperties = UtilFactory.getUtil().findFile("log4j.properties",
+        new File(System.getProperty("user.dir")));
+
+    if (log4jProperties != null) {
+      PropertyConfigurator.configure(log4jProperties);
+    } else {
+      System.out.println("There is not log4j.properties file found in this directory.");
+    }
   }
 
 }
