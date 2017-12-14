@@ -44,7 +44,7 @@ tasks.withType(Test) {
 // Build JAR
 task createJar(type: Jar) {
     manifest {
-        attributes 'Implementation-Title': 'Soundcloud Challenge',
+        attributes 'Implementation-Title': 'Followermaze Server',
         	'Implementation-Version': version,
         	'Main-Class': mainClassName
     }

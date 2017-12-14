@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>soundcloud</name>
-	<comment>Project soundcloud created by Buildship.</comment>
+	<name>followermaze-server</name>
+	<comment>Back-end Follower Maze Problem.</comment>
 	<projects>
 	</projects>
 	<buildSpec>

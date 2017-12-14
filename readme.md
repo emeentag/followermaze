@@ -1,4 +1,4 @@
-# Back-end Developer Challenge: Follower Maze
+# Back-end Follower Maze Problem
 
 <img src="assets/system.jpeg" height="300">
 <img src="assets/user_registration.jpeg" height="300">
@@ -38,15 +38,15 @@ When i start to test, i figured out that registered clients are getting new even
 In this section i will explain how you can test both with the JAR file that you provided and with the unit tests and integration tests.
 
 ### For Unit Testing
-This project is created with gradle so it is enough to run `gradle test --info` for unit tests.
+This project is created with gradle so it is enough to run `gradle test` for unit tests.
 
 ### For Integration Testing
-I also added some integration tests. Which means real servers and a tcp client are created then start to send events. I added another gradle task in my project for testing integration. To do that just run `gradle integrationTest --info`
+I also added some integration tests. Which means real servers and a tcp client are created then start to send events. I added another gradle task in my project for testing integration. To do that just run `gradle integrationTest`
 
 ### Test With Provided JAR
 To test with the jar that you provided, first you have to run my application. I suggest to run with `./run.sh` file. Because you can set some enviromental variables before you run the application with shell script. (Please have a look configuration section for details.) This will run the application in development mode. 
 
-If you want to build a JAR file of the application and running it please run `./run.sh --prod` command. This will run the all tests and build the application then create a JAR file under `/build/libs/soundcloud-all-1.0.jar`. Also it runs the application immediately. (Note a sample jar file is also added to the root of the project so maybe you want to run this jar file directly and starts the app. This is just for any case failed build.)
+If you want to build a JAR file of the application and running it please run `./run.sh --prod` command. This will run the all tests and build the application then create a JAR file under `/build/libs/followermaze-server-all-1.0.jar`. Also it runs the application immediately. (Note a sample jar file is also added to the root of the project so maybe you want to run this jar file directly and starts the app. This is just for any case failed build.)
 
 And after you see *Servers are up and running.* message you can run `./followermaze.sh` and wait until the results are shown.
 
